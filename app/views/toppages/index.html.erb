@@ -1,8 +1,11 @@
-<div class="center jumbotron">
-  <div class="text-center">
-    <h1>Welcome to the "Movism!"</h1>
-    <h3>Let's talk about movies!</h3>
-    
+<% if logged_in? %>
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>Welcome to the "Movism!"</h1>
+      <h3>Let's talk about movies!</h3>
     <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-success' %>
+    </div>
   </div>
-</div>
+<% end %>
