@@ -1,0 +1,38 @@
+<div class="text-center">
+  <h1>Sign up</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(model: @user, local: true) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :name, 'Name(必須)' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :introduction, 'Introduction' %>
+        <%= f.text_field :introduction, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :email, 'Email(必須)' %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, 'Password(必須)' %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, 'Confirmation(必須)' %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+
+      <%= f.submit 'Sign up', class: 'btn btn-primary btn-success' %>
+    <% end %>
+  </div>
+</div>
