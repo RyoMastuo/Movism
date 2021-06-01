@@ -1,0 +1,21 @@
+<ul class="list-unstyled">
+  <% rooms.each do |room| %>
+    <li class="media mb-3">
+
+      <div class="media-body">
+        <div>
+          <h2><%= room.name %></h2>
+        </div>
+        <div>
+          <h4><%= room.introduction %></h4>
+        </div>
+        <div>
+          <% if current_user == room.user %>
+            <%= link_to "Delete", room, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate rooms %>
+</ul>

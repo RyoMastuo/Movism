@@ -1,5 +1,9 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+<h1 class="text-center">Rooms</h1>
+
+  <div>
+      <%= render 'rooms/rooms', rooms: @rooms %>
+  </div>
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">
