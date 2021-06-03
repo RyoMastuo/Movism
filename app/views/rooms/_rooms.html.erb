@@ -1,18 +1,19 @@
 <ul class="list-unstyled">
   <% rooms.each do |room| %>
-    <li class="media mb-3">
+    <li class="btn btn-light btn-block border border-dark">
 
-      <div class="media-body offset-sm-3">
-        <div>
+      <div class="offset-sm-3">
+        <div class="text-left">
           <h2><%= room.name %></h2>
         </div>
-        <div>
+        <div class="text-left">
           <h4><%= room.introduction %></h4>
         </div>
-        <div>
+        <div class="d-flex">
           <% if current_user == room.user %>
             <%= link_to "Delete", room, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
           <% end %>
+          <%= render 'favorites/favorite_button', room: room %>
         </div>
       </div>
     </li>

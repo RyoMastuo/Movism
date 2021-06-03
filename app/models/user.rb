@@ -8,4 +8,27 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :rooms
+  
+  has_many :posts
+  has_many :postings, through: :posts, source: :room
+  
+  has_many :favorites
+  has_many :likes, through: :favorites, source: :room
+  
+  def post
+    self.posts.find_or_create_by(room_id: other_room.id)
+  end
+  
+  def favorite(other_room)
+    self.favorites.find_or_create_by(room_id: other_room.id)
+  end
+  
+  def unfavorite(other_room)
+    favorite = self.favorites.find_by(room_id: other_room.id)
+    favorite.destroy if favorite
+  end
+  
+  def favoriting?(other_room)
+    self.likes.include?(other_room)
+  end
 end

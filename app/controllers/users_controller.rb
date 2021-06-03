@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:show]
   def show
     @user = User.find(params[:id])
+    @likes = @user.likes.order(id: :desc).page(params[:page])
+    counts(@user)
   end
   
   def new
@@ -19,6 +21,9 @@ class UsersController < ApplicationController
       render :new
     end
   end
+  
+  
+
   
   private
   

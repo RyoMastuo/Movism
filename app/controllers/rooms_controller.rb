@@ -2,6 +2,10 @@ class RoomsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
   
+  def show
+    @room = Room.find(params[:id])
+  end
+  
   def new
     @room = Room.new
   end
