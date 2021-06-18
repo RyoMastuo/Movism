@@ -13,7 +13,15 @@
       <div class="form-group">
         <%= form_with(model: @post, local: true) do |f| %>
         
-          
+          <% if @post.errors.any? %>
+            <div id="error_explanation">
+              <ul>
+                <% @post.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
             <%= f.hidden_field :user_id, :value => session[:user_id] %>
             <%= f.hidden_field :room_id, :value => params[:id] %>          
             <%= f.text_area :content, class: 'form-control', placeholder: "メッセージを入力", rows: 5%>

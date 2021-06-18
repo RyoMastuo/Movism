@@ -7,7 +7,7 @@ class PostsController < ApplicationController
       flash[:success] = 'メッセージを投稿しました。'
       redirect_to controller: 'rooms', action: 'show', id: params[:post][:room_id]
     else
-      @room = Room.find(params[:id])
+      @room = Room.find(params[:post][:room_id])
       @posts = current_user.posts.page(params[:page])
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'
       render 'rooms/show'
