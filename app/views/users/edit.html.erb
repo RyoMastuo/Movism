@@ -1,0 +1,24 @@
+<div class="text-center">
+  <h1>プロフィール編集</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(model: @user, local: true) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :name, 'Name(必須)' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :introduction, 'Introduction(任意)' %>
+        <%= f.text_area :introduction, class: 'form-control' %>
+      </div>
+      
+      
+      <%= f.submit 'プロフィール更新', class: 'btn btn-success btn-block' %>
+    <% end %>
+  </div>
+</div>

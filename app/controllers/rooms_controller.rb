@@ -1,9 +1,11 @@
 class RoomsController < ApplicationController
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
-  
+  before_action :correct_user, only: [:update, :edit]
+
   def show
     @room = Room.find(params[:id])
+    @post = current_user.posts.build
+    @posts = @room.posts.all
   end
   
   def new
@@ -14,20 +16,29 @@ class RoomsController < ApplicationController
     @room = current_user.rooms.build(room_params)
     if @room.save
       flash[:success] = 'トークルームを作成しました。'
-      redirect_to root_url
+      redirect_to @room
     else
       @rooms = current_user.rooms.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'トークルーム作成に失敗しました。'
       render 'rooms/new'
     end
   end
-
-  def destroy
-    @room.destroy
-    flash[:success] = 'トークルームを削除しました。'
-    redirect_back(fallback_location: root_path)
+  
+  def edit
+    @room = Room.find(params[:id])
   end
   
+  def update
+    @room = Room.find(params[:id])
+    
+    if @room.update(room_params)
+      flash[:success] = "ルーム情報を正常に更新しました"
+      redirect_to root_path
+    else
+      flash.now[:danger] = '更新できませんでした'
+      render :edit
+    end
+  end
   
   private
   

@@ -1,1 +1,22 @@
-1
+<div class="bg-success text-white mt-n4 d-flex">
+  <h3 class="pl-3"><%= @room.name %></h3>
+  <p class="ml-4"><%= @room.introduction %></p>
+</div>
+
+<div class="border border-dark border-top-0 p-5 overflow-auto" style="height:500px">
+  <%= render 'posts/posts', posts: @posts %>
+</div>
+
+<div>
+  <div class="row text-right mt-3">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <%= form_with(model: @post, local: true) do |f| %>
+          <%= f.hidden_field :user_id, :value => session[:user_id] %>
+          <%= f.hidden_field :room_id, :value => params[:id] %>          
+          <%= f.text_area :content, class: 'form-control', placeholder: "メッセージを入力"%>
+          <%= f.submit 'Post', class: 'btn btn-success' %>
+        <% end %>
+      </div>
+  </div>
+</div>

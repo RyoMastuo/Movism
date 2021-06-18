@@ -1,4 +1,4 @@
-<header class="mb-4">
+<header class="mb-4 position-fixed" style="width:100%; z-index: 10;">
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <a class="navbar-brand" href="/">Movism</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -10,7 +10,7 @@
         <% if logged_in? %>
         <li class="nav-item"><%= link_to 'Rooms', root_path, class: 'nav-link' %></li>
         <li class="nav-item"><%= link_to current_user.name, user_path(current_user), class: 'nav-link' %></li>
-        <li class="nav-item"><%= link_to 'Logout', logout_path, method: :delete,  class: 'nav-link'%></li>
+        <li class="nav-item"><%= link_to 'Logout', logout_path, method: :delete,  data: {confirm: "You sure?" },class: 'nav-link'%></li>
         <% else %>
           <li class="nav-item"><%= link_to 'Signup', signup_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'Login', login_path, class: 'nav-link' %></li>

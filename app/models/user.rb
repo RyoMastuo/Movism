@@ -15,8 +15,12 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :likes, through: :favorites, source: :room
   
-  def post
+  def post(other_room)
     self.posts.find_or_create_by(room_id: other_room.id)
+  end
+  
+  def posting?(other_room)
+    self.postings.include?(other_room)
   end
   
   def favorite(other_room)
@@ -31,4 +35,6 @@ class User < ApplicationRecord
   def favoriting?(other_room)
     self.likes.include?(other_room)
   end
+  
+  
 end
