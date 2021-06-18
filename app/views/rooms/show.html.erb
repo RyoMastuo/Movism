@@ -1,4 +1,4 @@
-<div class="bg-success text-white mt-n4 d-flex">
+<div class="bg-success text-white d-flex">
   <h3 class="pl-3"><%= @room.name %></h3>
   <p class="ml-4"><%= @room.introduction %></p>
 </div>
@@ -12,10 +12,12 @@
     <div class="col-sm-12">
       <div class="form-group">
         <%= form_with(model: @post, local: true) do |f| %>
-          <%= f.hidden_field :user_id, :value => session[:user_id] %>
-          <%= f.hidden_field :room_id, :value => params[:id] %>          
-          <%= f.text_area :content, class: 'form-control', placeholder: "メッセージを入力"%>
-          <%= f.submit 'Post', class: 'btn btn-success' %>
+        
+          
+            <%= f.hidden_field :user_id, :value => session[:user_id] %>
+            <%= f.hidden_field :room_id, :value => params[:id] %>          
+            <%= f.text_area :content, class: 'form-control', placeholder: "メッセージを入力", rows: 5%>
+            <%= f.submit 'Post', class: 'btn btn-success' %>
         <% end %>
       </div>
   </div>

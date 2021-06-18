@@ -2,7 +2,7 @@
   <% posts.each do |post| %>
   <li class="block border border-dark rounded mb-4">
     <p><%= post.user.name %></p>
-    <h5><%= post.content %></h5>
+    <h5><%= simple_format(post.content) %></h5>
     <small class="offset-sm-6"><%= post.created_at %></small>
     <div>
           <% if current_user == post.user %>
