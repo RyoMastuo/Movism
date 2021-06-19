@@ -1,15 +1,10 @@
 <div class="row">
   <aside class="col-sm-4">
-    <div>
-    <h2 class="text-center"><%= @user.name %></h2>
-    </div>
-    <div>
-      <p class="text-center"><%= simple_format(@user.introduction) %></p>
-    </div>
-    <div>
+    <div class="text-center">
+      <h2><%= @user.name %></h2>
+      <%= simple_format(@user.introduction) %>
       <%= link_to 'プロフィール編集', edit_user_path(@user), class: 'btn btn-primary' %>
     </div>
-    
   </aside>
   <div class="col-sm-8">
     <div class="card">
