@@ -1,13 +1,14 @@
-<div class="bg-success text-white d-flex">
+<div class="bg-success text-white d-flex justify-content-between">
   <h3 class="pl-3"><%= @room.name %></h3>
   <p class="ml-4"><%= @room.introduction %></p>
+  <%= render 'favorites/favorite_button', room: @room %>
 </div>
 
 <div class="border border-dark border-top-0 p-5 overflow-auto" style="height:500px">
   <%= render 'posts/posts', posts: @posts %>
 </div>
 
-<div>
+
   <div class="row text-right mt-3">
     <div class="col-sm-12">
       <div class="form-group">

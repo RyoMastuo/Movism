@@ -1,4 +1,4 @@
-<ul class="list-unstyled border border-dark overflow-auto p-3" style="height: 500px;">
+<ul class="list-unstyled p-3">
   <% rooms.each do |room| %>
     <li class="block border border-dark rounded mb-4">
 
@@ -14,7 +14,6 @@
           <% if current_user == room.user %>
           <%= link_to "Update", edit_room_path(room.id), class: 'btn btn-success'%>
           <% end %>
-         <%= render 'favorites/favorite_button', room: room %>
         </div>
       </div>
     </li>
